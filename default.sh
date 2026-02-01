@@ -17,7 +17,7 @@ PIP_PACKAGES=(
 
 NODES=(
     "https://github.com/ClownsharkBatwing/RES4LYF"
-    "https://github.com/newtextdoc1111/ComfyUI-Autocomplete-Plus"
+    "https://github.com/pythongosssss/ComfyUI-Custom-Scripts"
 )
 
 WORKFLOWS=(
