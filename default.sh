@@ -1,7 +1,5 @@
 #!/bin/bash
 
-sudo apt install aria2
-
 source /venv/main/bin/activate
 COMFYUI_DIR=${WORKSPACE}/ComfyUI
 
