@@ -3,16 +3,16 @@
 source /venv/main/bin/activate
 COMFYUI_DIR=${WORKSPACE}/ComfyUI
 
+APT_INSTALL="${APT_INSTALL:-apt-get install -y}"
+
+
 # Packages are installed after nodes so we can fix them...
 
 APT_PACKAGES=(
-    #"package-1"
-    #"package-2"
+    aria2
 )
 
 PIP_PACKAGES=(
-    #"package-1"
-    #"package-2"
 )
 
 NODES=(
@@ -79,13 +79,13 @@ function provisioning_start() {
 }
 
 function provisioning_get_apt_packages() {
-    if [[ -n $APT_PACKAGES ]]; then
+    if (( ${#APT_PACKAGES[@]} )); then
             sudo $APT_INSTALL ${APT_PACKAGES[@]}
     fi
 }
 
 function provisioning_get_pip_packages() {
-    if [[ -n $PIP_PACKAGES ]]; then
+    if (( ${#PIP_PACKAGES[@]} )); then
             pip install --no-cache-dir ${PIP_PACKAGES[@]}
     fi
 }
@@ -170,18 +170,33 @@ function provisioning_has_valid_civitai_token() {
 
 # Download from $1 URL to $2 file path
 function provisioning_download() {
-    if [[ -n $HF_TOKEN && $1 =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
-        auth_token="$HF_TOKEN"
-    elif 
-        [[ -n $CIVITAI_TOKEN && $1 =~ ^https://([a-zA-Z0-9_-]+\.)?civitai\.com(/|$|\?) ]]; then
-        auth_token="$CIVITAI_TOKEN"
+    local url="$1"
+    local outdir="$2"
+    local chunk="${3:-8M}"
+    local auth_header=""
+
+    # Reset token per call
+    if [[ -n "${HF_TOKEN:-}" && $url =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
+        auth_header="Authorization: Bearer ${HF_TOKEN}"
+    elif [[ -n "${CIVITAI_TOKEN:-}" && $url =~ ^https://([a-zA-Z0-9_-]+\.)?civitai\.com(/|$|\?) ]]; then
+        auth_header="Authorization: Bearer ${CIVITAI_TOKEN}"
     fi
-    if [[ -n $auth_token ]];then
-        wget --header="Authorization: Bearer $auth_token" -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
-    else
-        wget -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
-    fi
+
+    aria2c \
+        -c \
+        -x 16 \
+        -s 16 \
+        -k "$chunk" \
+        --file-allocation=trunc \
+        --summary-interval=30 \
+        --auto-file-renaming=false \
+        --allow-overwrite=false \
+        --content-disposition=true \
+        ${auth_header:+--header="$auth_header"} \
+        -d "$outdir" \
+        "$url"
 }
+
 
 # Allow user to disable provisioning if they started with a script they didn't want
 if [[ ! -f /.noprovisioning ]]; then
