@@ -93,7 +93,7 @@ function provisioning_get_pip_packages() {
 function provisioning_get_nodes() {
     for repo in "${NODES[@]}"; do
         dir="${repo##*/}"
-        path="${COMFYUI_DIR}custom_nodes/${dir}"
+        path="${COMFYUI_DIR}/custom_nodes/${dir}"
         requirements="${path}/requirements.txt"
         if [[ -d $path ]]; then
             if [[ ${AUTO_UPDATE,,} != "false" ]]; then
@@ -174,6 +174,10 @@ function provisioning_download() {
     local outdir="$2"
     local chunk="${3:-8M}"
     local auth_header=""
+    local filename
+
+    # Extract filename from URL
+    filename="$(basename "${url%%\?*}")"
 
     # Reset token per call
     if [[ -n "${HF_TOKEN:-}" && $url =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
@@ -181,6 +185,8 @@ function provisioning_download() {
     elif [[ -n "${CIVITAI_TOKEN:-}" && $url =~ ^https://([a-zA-Z0-9_-]+\.)?civitai\.com(/|$|\?) ]]; then
         auth_header="Authorization: Bearer ${CIVITAI_TOKEN}"
     fi
+
+    echo "Saving as: ${filename}"
 
     aria2c \
         -c \
@@ -191,11 +197,12 @@ function provisioning_download() {
         --summary-interval=30 \
         --auto-file-renaming=false \
         --allow-overwrite=false \
-        --content-disposition=true \
         ${auth_header:+--header="$auth_header"} \
         -d "$outdir" \
+        -o "$filename" \
         "$url"
 }
+
 
 
 # Allow user to disable provisioning if they started with a script they didn't want
