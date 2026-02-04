@@ -28,18 +28,18 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-preview.safetensors"
+    "https://huggingface.co/ChenkinRF/ChenkinNoob-XL-v0.2-Rectified-Flow/resolve/main/ChenkinNoob-XL-v0.2-Rectified-Flow.safetensors"
 )
 
 LORA_MODELS=(
 )
 
 CLIP_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors"
+    #"https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors"
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors"
+    #"https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors"
 )
 
 ESRGAN_MODELS=(
