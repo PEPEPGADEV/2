@@ -18,6 +18,7 @@ PIP_PACKAGES=(
 NODES=(
     "https://github.com/ClownsharkBatwing/RES4LYF"
     "https://github.com/pythongosssss/ComfyUI-Custom-Scripts"
+    "https://github.com/Extraltodeus/Skimmed_CFG"
 )
 
 WORKFLOWS=(
