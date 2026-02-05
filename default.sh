@@ -19,6 +19,7 @@ NODES=(
     "https://github.com/ClownsharkBatwing/RES4LYF"
     "https://github.com/pythongosssss/ComfyUI-Custom-Scripts"
     "https://github.com/Extraltodeus/Skimmed_CFG"
+    "https://github.com/silveroxides/ComfyUI_SamplingUtils"
 )
 
 WORKFLOWS=(
