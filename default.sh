@@ -20,6 +20,7 @@ NODES=(
     "https://github.com/pythongosssss/ComfyUI-Custom-Scripts"
     "https://github.com/Extraltodeus/Skimmed_CFG"
     "https://github.com/silveroxides/ComfyUI_SamplingUtils"
+    "https://github.com/Jonseed/ComfyUI-Detail-Daemon"
 )
 
 WORKFLOWS=(
