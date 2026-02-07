@@ -21,6 +21,9 @@ NODES=(
     "https://github.com/Extraltodeus/Skimmed_CFG"
     "https://github.com/silveroxides/ComfyUI_SamplingUtils"
     "https://github.com/Jonseed/ComfyUI-Detail-Daemon"
+    "https://github.com/silveroxides/ComfyUI_FDGuidance"
+    "https://github.com/capitan01R/ComfyUI-CapitanZiT-Scheduler"
+    
 )
 
 WORKFLOWS=(
