@@ -34,18 +34,18 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://huggingface.co/lodestones/Chroma2-Kaleidoscope/resolve/main/chroma2_kaleidoscope.safetensors"
+    "https://civitai.com/api/download/models/2682208?token=098560db733d2419cd61b2347adf7f7a"
 )
 
 LORA_MODELS=(
 )
 
 CLIP_MODELS=(
-    "https://huggingface.co/Comfy-Org/flux2-klein-4B/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors"
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors"
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/vae/flux2-vae.safetensors"
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors"
 )
 
 ESRGAN_MODELS=(
