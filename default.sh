@@ -23,6 +23,7 @@ NODES=(
     "https://github.com/Jonseed/ComfyUI-Detail-Daemon"
     "https://github.com/silveroxides/ComfyUI_FDGuidance"
     "https://github.com/capitan01R/ComfyUI-CapitanZiT-Scheduler"
+    "https://github.com/spacepxl/ComfyUI-VAE-Utils"
     
 )
 
@@ -45,7 +46,7 @@ CLIP_MODELS=(
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors"
+    "https://huggingface.co/spacepxl/Wan2.1-VAE-upscale2x/resolve/main/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
 )
 
 ESRGAN_MODELS=(
