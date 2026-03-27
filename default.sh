@@ -17,13 +17,13 @@ PIP_PACKAGES=(
 
 NODES=(
     "https://github.com/ClownsharkBatwing/RES4LYF"
-    "https://github.com/pythongosssss/ComfyUI-Custom-Scripts"
     "https://github.com/Extraltodeus/Skimmed_CFG"
     "https://github.com/silveroxides/ComfyUI_SamplingUtils"
     "https://github.com/Jonseed/ComfyUI-Detail-Daemon"
     "https://github.com/silveroxides/ComfyUI_FDGuidance"
     "https://github.com/capitan01R/ComfyUI-CapitanZiT-Scheduler"
     "https://github.com/rgthree/rgthree-comfy"
+    "https://github.com/newtextdoc1111/ComfyUI-Autocomplete-Plus"
     
 )
 
