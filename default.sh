@@ -23,7 +23,7 @@ NODES=(
     "https://github.com/Jonseed/ComfyUI-Detail-Daemon"
     "https://github.com/silveroxides/ComfyUI_FDGuidance"
     "https://github.com/capitan01R/ComfyUI-CapitanZiT-Scheduler"
-    "https://github.com/spacepxl/ComfyUI-VAE-Utils"
+    "https://github.com/rgthree/rgthree-comfy"
     
 )
 
