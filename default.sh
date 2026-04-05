@@ -24,7 +24,7 @@ NODES=(
     "https://github.com/capitan01R/ComfyUI-CapitanZiT-Scheduler"
     "https://github.com/rgthree/rgthree-comfy"
     "https://github.com/newtextdoc1111/ComfyUI-Autocomplete-Plus"
-    "https://github.com/AdamNizol/ComfyUI-Anima-Enhancer/"
+    "https://github.com/AdamNizol/ComfyUI-Anima-Enhancer"
     
 )
 
