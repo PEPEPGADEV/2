@@ -24,6 +24,7 @@ NODES=(
     "https://github.com/capitan01R/ComfyUI-CapitanZiT-Scheduler"
     "https://github.com/rgthree/rgthree-comfy"
     "https://github.com/newtextdoc1111/ComfyUI-Autocomplete-Plus"
+    "https://github.com/AdamNizol/ComfyUI-Anima-Enhancer/"
     
 )
 
@@ -39,6 +40,7 @@ UNET_MODELS=(
 )
 
 LORA_MODELS=(
+    "https://civitai.com/api/download/models/2832699?token=098560db733d2419cd61b2347adf7f7a"
 )
 
 CLIP_MODELS=(
