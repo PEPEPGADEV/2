@@ -36,7 +36,7 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://civitai.com/api/download/models/2798563?token=098560db733d2419cd61b2347adf7f7a"
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-preview3-base.safetensors"
 )
 
 LORA_MODELS=(
