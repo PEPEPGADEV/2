@@ -25,6 +25,8 @@ NODES=(
     "https://github.com/rgthree/rgthree-comfy"
     "https://github.com/newtextdoc1111/ComfyUI-Autocomplete-Plus"
     "https://github.com/AdamNizol/ComfyUI-Anima-Enhancer"
+    "https://github.com/Clybius/ComfyUI-CES"
+    
     
 )
 
@@ -36,11 +38,9 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-preview3-base.safetensors"
 )
 
 LORA_MODELS=(
-    "https://civitai.com/api/download/models/2832699?token=098560db733d2419cd61b2347adf7f7a"
 )
 
 CLIP_MODELS=(
