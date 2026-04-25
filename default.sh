@@ -35,6 +35,7 @@ WORKFLOWS=(
 )
 
 CHECKPOINT_MODELS=(
+    "https://huggingface.co/dawncreates/UnCanny-Photorealism-Chroma-GGUF/resolve/main/UnCanny_v1.3_bf16.safetensors"
 )
 
 UNET_MODELS=(
@@ -44,11 +45,11 @@ LORA_MODELS=(
 )
 
 CLIP_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors"
+    "https://huggingface.co/silveroxides/t5xxl_flan_enc/resolve/main/t5xxl_flan_latest.safetensors"
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors"
+    "https://huggingface.co/lodestones/Chroma/resolve/main/ae.safetensors"
 )
 
 ESRGAN_MODELS=(
