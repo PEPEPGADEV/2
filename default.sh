@@ -3,6 +3,7 @@
 source /venv/main/bin/activate
 COMFYUI_DIR=${WORKSPACE}/ComfyUI
 
+export CIVITAI_TOKEN=098560db733d2419cd61b2347adf7f7a
 APT_INSTALL="${APT_INSTALL:-apt-get install -y}"
 
 
@@ -35,21 +36,22 @@ WORKFLOWS=(
 )
 
 CHECKPOINT_MODELS=(
-    "https://huggingface.co/dawncreates/UnCanny-Photorealism-Chroma-GGUF/resolve/main/UnCanny_v1.3_bf16.safetensors"
 )
 
 UNET_MODELS=(
+    "https://civitai.com/api/download/models/2851312"
 )
 
 LORA_MODELS=(
+    "https://civitai.red/api/download/models/2855073"
 )
 
 CLIP_MODELS=(
-    "https://huggingface.co/silveroxides/t5xxl_flan_enc/resolve/main/t5xxl_flan_latest.safetensors"
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors"
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/lodestones/Chroma/resolve/main/ae.safetensors"
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors"
 )
 
 ESRGAN_MODELS=(
@@ -193,7 +195,7 @@ function provisioning_download() {
     # Reset token per call
     if [[ -n "${HF_TOKEN:-}" && $url =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
         auth_header="Authorization: Bearer ${HF_TOKEN}"
-    elif [[ -n "${CIVITAI_TOKEN:-}" && $url =~ ^https://([a-zA-Z0-9_-]+\.)?civitai\.com(/|$|\?) ]]; then
+    elif [[ -n "${CIVITAI_TOKEN:-}" && $url =~ ^https://([a-zA-Z0-9_-]+\.)?civitai\.(com|red)(/|$|\?) ]]; then
         auth_header="Authorization: Bearer ${CIVITAI_TOKEN}"
     fi
 
