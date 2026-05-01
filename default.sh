@@ -27,6 +27,7 @@ NODES=(
     "https://github.com/newtextdoc1111/ComfyUI-Autocomplete-Plus"
     "https://github.com/AdamNizol/ComfyUI-Anima-Enhancer"
     "https://github.com/Clybius/ComfyUI-CES"
+    "https://github.com/WASasquatch/RES4SHO"
     
     
 )
