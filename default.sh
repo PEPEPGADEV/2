@@ -37,18 +37,17 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://huggingface.co/silveroxides/Chroma-Misc-Models/resolve/main/Chroma-DC-2K/Chroma-DC-2K-Q8_0.gguf"
 )
 
 LORA_MODELS=(
 )
 
 CLIP_MODELS=(
-    "https://huggingface.co/silveroxides/t5xxl_flan_enc/resolve/main/t5xxl_flan_latest.safetensors"
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors"
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/lodestones/Chroma/resolve/main/ae.safetensors"
+    "https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/vae/qwen_image_vae.safetensors"
 )
 
 ESRGAN_MODELS=(
