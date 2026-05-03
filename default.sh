@@ -37,9 +37,11 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-preview3-base.safetensors"
 )
 
 LORA_MODELS=(
+    "https://civitai.com/api/download/models/2905490"
 )
 
 CLIP_MODELS=(
@@ -47,7 +49,7 @@ CLIP_MODELS=(
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/vae/qwen_image_vae.safetensors"
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors"
 )
 
 ESRGAN_MODELS=(
@@ -73,7 +75,7 @@ function provisioning_start() {
         "${COMFYUI_DIR}/models/clip" \
         "${CLIP_MODELS[@]}"
     provisioning_get_files \
-        "${COMFYUI_DIR}/models/lora" \
+        "${COMFYUI_DIR}/models/loras" \
         "${LORA_MODELS[@]}"
     provisioning_get_files \
         "${COMFYUI_DIR}/models/controlnet" \
@@ -85,6 +87,27 @@ function provisioning_start() {
         "${COMFYUI_DIR}/models/esrgan" \
         "${ESRGAN_MODELS[@]}"
     provisioning_print_end
+}
+
+function provisioning_get_filename_from_headers() {
+    local url="$1"
+    local auth=()
+    local header
+
+    if [[ -n "${HF_TOKEN:-}" && $url =~ huggingface\.co ]]; then
+        auth=(-H "Authorization: Bearer ${HF_TOKEN}")
+    elif [[ -n "${CIVITAI_TOKEN:-}" && $url =~ civitai\.(com|red) ]]; then
+        auth=(-H "Authorization: Bearer ${CIVITAI_TOKEN}")
+    fi
+
+    header=$(curl -sI -L "${auth[@]}" "$url" | tr -d '\r' | grep -i "content-disposition")
+
+    if [[ $header =~ filename=\"?([^\";]+)\"? ]]; then
+        echo "${BASH_REMATCH[1]}"
+        return 0
+    fi
+
+    return 1
 }
 
 function provisioning_get_apt_packages() {
@@ -186,7 +209,18 @@ function provisioning_download() {
     local filename
 
     # Extract filename from URL
-    filename="$(basename "${url%%\?*}")"
+    # Try to get filename from headers
+    filename=$(provisioning_get_filename_from_headers "$url")
+
+
+    if [[ -z "$filename" ]]; then
+        filename="$(basename "${url%%\?*}")"
+    fi
+
+
+    if [[ "$filename" != *.* ]]; then
+        filename="${filename}.safetensors"
+    fi
 
     # Reset token per call
     if [[ -n "${HF_TOKEN:-}" && $url =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
