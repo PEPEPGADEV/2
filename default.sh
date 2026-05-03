@@ -225,9 +225,15 @@ function provisioning_download() {
     # Reset token per call
     if [[ -n "${HF_TOKEN:-}" && $url =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
         auth_header="Authorization: Bearer ${HF_TOKEN}"
-    elif [[ -n "${CIVITAI_TOKEN:-}" && $url =~ ^https://([a-zA-Z0-9_-]+\.)?civitai\.(com|red)(/|$|\?) ]]; then
+    elif [[ -n "${CIVITAI_TOKEN:-}" && $url =~ civitai\.(com|red)/api/ ]]; then
         auth_header="Authorization: Bearer ${CIVITAI_TOKEN}"
     fi
+
+    if [[ $url =~ civitai\.(com|red)/api/download ]]; then
+        auth_header=""
+    fi
+
+
 
     echo "Saving as: ${filename}"
 
