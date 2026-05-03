@@ -18,15 +18,12 @@ PIP_PACKAGES=(
 
 NODES=(
     "https://github.com/ClownsharkBatwing/RES4LYF"
-    "https://github.com/Extraltodeus/Skimmed_CFG"
     "https://github.com/silveroxides/ComfyUI_SamplingUtils"
     "https://github.com/Jonseed/ComfyUI-Detail-Daemon"
     "https://github.com/silveroxides/ComfyUI_FDGuidance"
-    "https://github.com/capitan01R/ComfyUI-CapitanZiT-Scheduler"
     "https://github.com/rgthree/rgthree-comfy"
     "https://github.com/newtextdoc1111/ComfyUI-Autocomplete-Plus"
     "https://github.com/AdamNizol/ComfyUI-Anima-Enhancer"
-    "https://github.com/Clybius/ComfyUI-CES"
     "https://github.com/WASasquatch/RES4SHO"
     
     
@@ -40,19 +37,18 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-preview3-base.safetensors"
+    "https://huggingface.co/silveroxides/Chroma-Misc-Models/resolve/main/Chroma-DC-2K/Chroma-DC-2K-Q8_0.gguf"
 )
 
 LORA_MODELS=(
-    "https://civitai.red/api/download/models/2855073"
 )
 
 CLIP_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors"
+    "https://huggingface.co/silveroxides/t5xxl_flan_enc/resolve/main/t5xxl_flan_latest.safetensors"
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors"
+    "https://huggingface.co/lodestones/Chroma/resolve/main/ae.safetensors"
 )
 
 ESRGAN_MODELS=(
