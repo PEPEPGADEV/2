@@ -3,7 +3,6 @@
 source /venv/main/bin/activate
 COMFYUI_DIR=${WORKSPACE}/ComfyUI
 
-export CIVITAI_TOKEN=098560db733d2419cd61b2347adf7f7a
 APT_INSTALL="${APT_INSTALL:-apt-get install -y}"
 
 
@@ -41,7 +40,7 @@ UNET_MODELS=(
 )
 
 LORA_MODELS=(
-    "https://civitai.com/api/download/models/2905490"
+    "https://civitai.com/api/download/models/2905490?token=098560db733d2419cd61b2347adf7f7a"
 )
 
 CLIP_MODELS=(
@@ -96,8 +95,6 @@ function provisioning_get_filename_from_headers() {
 
     if [[ -n "${HF_TOKEN:-}" && $url =~ huggingface\.co ]]; then
         auth=(-H "Authorization: Bearer ${HF_TOKEN}")
-    elif [[ -n "${CIVITAI_TOKEN:-}" && $url =~ civitai\.(com|red) ]]; then
-        auth=(-H "Authorization: Bearer ${CIVITAI_TOKEN}")
     fi
 
     header=$(curl -sI -L "${auth[@]}" "$url" | tr -d '\r' | grep -i "content-disposition")
@@ -225,13 +222,9 @@ function provisioning_download() {
     # Reset token per call
     if [[ -n "${HF_TOKEN:-}" && $url =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
         auth_header="Authorization: Bearer ${HF_TOKEN}"
-    elif [[ -n "${CIVITAI_TOKEN:-}" && $url =~ civitai\.(com|red)/api/ ]]; then
-        auth_header="Authorization: Bearer ${CIVITAI_TOKEN}"
     fi
 
-    if [[ $url =~ civitai\.(com|red)/api/download ]]; then
-        auth_header=""
-    fi
+
 
 
 
