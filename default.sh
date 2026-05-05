@@ -24,6 +24,7 @@ NODES=(
     "https://github.com/newtextdoc1111/ComfyUI-Autocomplete-Plus"
     "https://github.com/AdamNizol/ComfyUI-Anima-Enhancer"
     "https://github.com/WASasquatch/RES4SHO"
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-preview3-base.safetensors"
     
     
 )
@@ -36,15 +37,19 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-preview3-base.safetensors"
 )
 
 LORA_MODELS=(
+    "https://civitai.red/api/download/models/2915112?token=098560db733d2419cd61b2347adf7f7a"
 )
 
 CLIP_MODELS=(
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors"
 )
 
 VAE_MODELS=(
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors"
 )
 
 ESRGAN_MODELS=(
@@ -201,30 +206,36 @@ function provisioning_download() {
     local auth_header=""
     local filename
 
-    # Extract filename from URL
-    # Try to get filename from headers
+    # Имя файла
     filename=$(provisioning_get_filename_from_headers "$url")
-
 
     if [[ -z "$filename" ]]; then
         filename="$(basename "${url%%\?*}")"
     fi
 
-
     if [[ "$filename" != *.* ]]; then
         filename="${filename}.safetensors"
     fi
 
-    # Reset token per call
-    if [[ -n "${HF_TOKEN:-}" && $url =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
-        auth_header="Authorization: Bearer ${HF_TOKEN}"
+    echo "Saving as: ${filename}"
+
+    # 👉 CIVITAI → wget
+    if [[ $url =~ civitai\.(com|red) ]]; then
+        echo "Using wget for civitai..."
+
+        wget \
+            --content-disposition \
+            --trust-server-names \
+            -O "${outdir}/${filename}" \
+            "$url"
+
+        return
     fi
 
-
-
-
-
-    echo "Saving as: ${filename}"
+    # 👉 HuggingFace → aria2
+    if [[ -n "${HF_TOKEN:-}" && $url =~ huggingface\.co ]]; then
+        auth_header="Authorization: Bearer ${HF_TOKEN}"
+    fi
 
     aria2c \
         -c \
