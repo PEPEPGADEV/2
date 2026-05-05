@@ -36,19 +36,15 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-preview3-base.safetensors"
 )
 
 LORA_MODELS=(
-    "https://civitai.com/api/download/models/2905490?token=098560db733d2419cd61b2347adf7f7a"
 )
 
 CLIP_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors"
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors"
 )
 
 ESRGAN_MODELS=(
