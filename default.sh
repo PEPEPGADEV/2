@@ -24,7 +24,6 @@ NODES=(
     "https://github.com/newtextdoc1111/ComfyUI-Autocomplete-Plus"
     "https://github.com/AdamNizol/ComfyUI-Anima-Enhancer"
     "https://github.com/WASasquatch/RES4SHO"
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-preview3-base.safetensors"
     
     
 )
@@ -37,7 +36,7 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-preview3-base.safetensors"
+    "https://civitai.red/api/download/models/2932616?token=098560db733d2419cd61b2347adf7f7a"
 )
 
 LORA_MODELS=(
