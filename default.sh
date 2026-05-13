@@ -36,7 +36,7 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://civitai.red/api/download/models/2851312?token=098560db733d2419cd61b2347adf7f7a"
+    "https://civitai.red/api/download/models/2941042?token=098560db733d2419cd61b2347adf7f7a"
 )
 
 LORA_MODELS=(
