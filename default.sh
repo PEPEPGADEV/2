@@ -26,6 +26,7 @@ NODES=(
     "https://github.com/WASasquatch/RES4SHO"
     "https://github.com/pamparamm/sd-perturbed-attention"
     "https://github.com/silveroxides/ComfyUI_SigmoidOffsetScheduler"
+    "https://github.com/pamparamm/ComfyUI-ppm"
     
     
 )
