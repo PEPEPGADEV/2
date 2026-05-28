@@ -27,6 +27,7 @@ NODES=(
     "https://github.com/pamparamm/sd-perturbed-attention"
     "https://github.com/silveroxides/ComfyUI_SigmoidOffsetScheduler"
     "https://github.com/pamparamm/ComfyUI-ppm"
+    "https://github.com/Clybius/ComfyUI-CES"
     
     
 )
