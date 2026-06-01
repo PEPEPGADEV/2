@@ -18,7 +18,6 @@ PIP_PACKAGES=(
 NODES=(
     "https://github.com/ClownsharkBatwing/RES4LYF"
     "https://github.com/silveroxides/ComfyUI_SamplingUtils"
-    "https://github.com/Jonseed/ComfyUI-Detail-Daemon"
     "https://github.com/silveroxides/ComfyUI_FDGuidance"
     "https://github.com/rgthree/rgthree-comfy"
     "https://github.com/newtextdoc1111/ComfyUI-Autocomplete-Plus"
@@ -40,7 +39,7 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://civitai.red/api/download/models/2974397?token=098560db733d2419cd61b2347adf7f7a"
+    "https://civitai.red/api/download/models/2982979?token=098560db733d2419cd61b2347adf7f7a"
 
 )
 
