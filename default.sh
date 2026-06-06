@@ -39,7 +39,7 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://huggingface.co/Bluvoll/SlivaniMix/resolve/main/Slivani-2.0-1280px.safetensors"
+    "https://civitai.red/api/download/models/2982979?token=098560db733d2419cd61b2347adf7f7a"
 
 )
 
