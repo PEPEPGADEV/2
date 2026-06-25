@@ -39,7 +39,7 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://civitai.red/api/download/models/2963435?token=098560db733d2419cd61b2347adf7f7a"
+    "https://civitai.red/api/download/models/3067703?token=098560db733d2419cd61b2347adf7f7a"
 
 )
 
@@ -53,6 +53,7 @@ CLIP_MODELS=(
 
 VAE_MODELS=(
     "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors"
+    "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors"
 )
 
 ESRGAN_MODELS=(
