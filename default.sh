@@ -52,8 +52,8 @@ CLIP_MODELS=(
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors"
-    "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors"
+    "https://huggingface.co/Kijai/QwenImage_experimental/resolve/main/qwen_image_HDR_vae_fp32_comfy.safetensors"
+
 )
 
 ESRGAN_MODELS=(
