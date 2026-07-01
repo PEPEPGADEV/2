@@ -28,7 +28,6 @@ NODES=(
     "https://github.com/pamparamm/ComfyUI-ppm"
     "https://github.com/Clybius/ComfyUI-CES"
     
-    
 )
 
 WORKFLOWS=(
@@ -39,12 +38,13 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://civitai.red/api/download/models/3067352?token=098560db733d2419cd61b2347adf7f7a"
+    "https://civitai.red/api/download/models/3083523?token=098560db733d2419cd61b2347adf7f7a"
 
 )
 
 LORA_MODELS=(
     "https://civitai.red/api/download/models/2951113?token=098560db733d2419cd61b2347adf7f7a"
+    "https://civitai.red/api/download/models/3086111?token=098560db733d2419cd61b2347adf7f7a"
 )
 
 CLIP_MODELS=(
@@ -52,7 +52,7 @@ CLIP_MODELS=(
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/Kijai/QwenImage_experimental/resolve/main/qwen_image_HDR_vae_fp32_comfy.safetensors"
+    "https://huggingface.co/Anzhc/Qwen2D-Anime-VAE/resolve/main/Qwen2D-Anime-dense_epoch_1.safetensors"
 
 )
 
