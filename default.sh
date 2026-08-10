@@ -39,7 +39,7 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://huggingface.co/silveroxides/Kroma-Quant/resolve/main/kroma-v0.2-base-int8-convrot-simple.safetensors"
+    ""
 
 )
 
@@ -47,11 +47,11 @@ LORA_MODELS=(
 )
 
 CLIP_MODELS=(
-    "https://civitai.red/api/download/models/3106559?fileId=2986504"
+    ""
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/spacepxl/Wan2.1-VAE-upscale2x/resolve/main/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
+    "s"
 
 )
 
