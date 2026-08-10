@@ -27,7 +27,7 @@ NODES=(
     "https://github.com/silveroxides/ComfyUI_SigmoidOffsetScheduler"
     "https://github.com/pamparamm/ComfyUI-ppm"
     "https://github.com/Clybius/ComfyUI-CES"
-    "https://github.com/Anzhc/anzhc-qwen2d-comfyui"
+    "https://github.com/spacepxl/ComfyUI-VAE-Utils"
     
 )
 
@@ -39,21 +39,19 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://civitai.red/api/download/models/3083523?token=098560db733d2419cd61b2347adf7f7a"
+    "https://huggingface.co/silveroxides/Kroma-Quant/resolve/main/kroma-v0.2-base-int8-convrot-simple.safetensors"
 
 )
 
 LORA_MODELS=(
-    "https://civitai.red/api/download/models/2951113?token=098560db733d2419cd61b2347adf7f7a"
-    "https://civitai.red/api/download/models/3086111?token=098560db733d2419cd61b2347adf7f7a"
 )
 
 CLIP_MODELS=(
-    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors"
+    "https://civitai.red/api/download/models/3106559?fileId=2986504"
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/Anzhc/Qwen2D-Anime-VAE/resolve/main/Qwen2D-Anime-dense_epoch_1.safetensors"
+    "https://huggingface.co/spacepxl/Wan2.1-VAE-upscale2x/resolve/main/Wan2.1_VAE_upscale2x_imageonly_real_v1.safetensors"
 
 )
 
