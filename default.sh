@@ -45,7 +45,7 @@ CLIP_MODELS=(
 )
 
 VAE_MODELS=(
-    "s"
+    ""
 
 )
 
