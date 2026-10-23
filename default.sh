@@ -154,7 +154,7 @@ function provisioning_download() {
     esac
 
     printf 'Downloading %s -> %s\n' "$url" "$dest"
-    if ! aria2c -c -x 8 -s 8 -k 4M \
+    if ! aria2c -c -x 16 -s 16 -k 4M \
         --max-tries=10 --retry-wait=10 \
         --file-allocation=none --auto-file-renaming=false \
         --summary-interval=30 \
