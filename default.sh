@@ -33,7 +33,7 @@ CHECKPOINT_MODELS=(
 )
 
 UNET_MODELS=(
-    ""
+    
 
 )
 
@@ -41,11 +41,11 @@ LORA_MODELS=(
 )
 
 CLIP_MODELS=(
-    ""
+    
 )
 
 VAE_MODELS=(
-    ""
+    
 
 )
 
