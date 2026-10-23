@@ -17,17 +17,11 @@ PIP_PACKAGES=(
 
 NODES=(
     "https://github.com/ClownsharkBatwing/RES4LYF"
-    "https://github.com/silveroxides/ComfyUI_SamplingUtils"
-    "https://github.com/silveroxides/ComfyUI_FDGuidance"
     "https://github.com/rgthree/rgthree-comfy"
-    "https://github.com/newtextdoc1111/ComfyUI-Autocomplete-Plus"
-    "https://github.com/AdamNizol/ComfyUI-Anima-Enhancer"
     "https://github.com/WASasquatch/RES4SHO"
     "https://github.com/pamparamm/sd-perturbed-attention"
-    "https://github.com/silveroxides/ComfyUI_SigmoidOffsetScheduler"
     "https://github.com/pamparamm/ComfyUI-ppm"
     "https://github.com/Clybius/ComfyUI-CES"
-    "https://github.com/spacepxl/ComfyUI-VAE-Utils"
     
 )
 
