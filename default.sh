@@ -46,11 +46,11 @@ LORA_MODELS=(
 
 # Place the text encoder in models/text_encoders.
 CLIP_MODELS=(
-    "https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_bf16.safetensors"
+    "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_bf16.safetensors"
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/Comfy-Org/Krea-2/blob/main/vae/qwen_image_vae.safetensors"
+    "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/vae/qwen_image_vae.safetensors"
 )
 
 ESRGAN_MODELS=(
@@ -140,7 +140,7 @@ function provisioning_download() {
     fi
 
     case "$url" in
-        https://civitai.com/*)
+        https://civitai.com/*|https://civitai.red/*)
             if [[ -z "${CIVITAI_TOKEN:-}" ]]; then
                 printf 'ERROR: CIVITAI_TOKEN is empty. Add it at the top of the script.\n' >&2
                 return 1
