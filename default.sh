@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Vast.ai / ComfyUI provisioning
-# Kromoss model: Civitai version 3422515 (NOT convrot)
-# Text encoder and VAE: lodestones/Kromoss on Hugging Face
+# Download the text encoder to models/text_encoders and the VAE to models/vae.
+# Files are hosted in the lodestones/Kromoss Hugging Face repository.
 
 # Keep the Python environment and custom nodes from the original script.
 if [[ -f /venv/main/bin/activate ]]; then
@@ -11,8 +11,8 @@ fi
 
 COMFYUI_DIR="${WORKSPACE:-/workspace}/ComfyUI"
 APT_INSTALL="${APT_INSTALL:-apt-get install -y}"
-KROMOSS_VERSION_ID="3422515"
-KROMOSS_FILENAME="Kromoss_Civitai_v${KROMOSS_VERSION_ID}.safetensors"
+# Вставь Civitai API токен между кавычками для загрузок с civitai.com.
+export CIVITAI_TOKEN="53367fba9b86b51f3f594871b16486e3"
 FAILED_DOWNLOADS=0
 
 APT_PACKAGES=(
@@ -35,6 +35,7 @@ WORKFLOWS=(
 )
 
 CHECKPOINT_MODELS=(
+    "https://civitai.red/api/download/models/3400188?fileId=3290672"
 )
 
 UNET_MODELS=(
@@ -43,13 +44,13 @@ UNET_MODELS=(
 LORA_MODELS=(
 )
 
-# MOSS-Image uses models/text_encoders, NOT models/clip.
+# Place the text encoder in models/text_encoders.
 CLIP_MODELS=(
-    "https://huggingface.co/lodestones/Kromoss/resolve/main/text_encoders/qwen3.5_9b_bf16.safetensors"
+    "https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_bf16.safetensors"
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/lodestones/Kromoss/resolve/main/vae/flux2-vae_small.safetensors"
+    "https://huggingface.co/Comfy-Org/Krea-2/blob/main/vae/qwen_image_vae.safetensors"
 )
 
 ESRGAN_MODELS=(
@@ -59,7 +60,7 @@ CONTROLNET_MODELS=(
 )
 
 function provisioning_print_header() {
-    printf '\n######### ComfyUI provisioning (Kromoss Civitai) #########\n\n'
+    printf '\n######### ComfyUI provisioning (CLIP + VAE) #########\n\n'
 }
 
 function provisioning_get_apt_packages() {
@@ -141,7 +142,7 @@ function provisioning_download() {
     case "$url" in
         https://civitai.com/*)
             if [[ -z "${CIVITAI_TOKEN:-}" ]]; then
-                printf 'ERROR: CIVITAI_TOKEN is not set. Supply it as a Vast.ai environment variable.\n' >&2
+                printf 'ERROR: CIVITAI_TOKEN is empty. Add it at the top of the script.\n' >&2
                 return 1
             fi
             auth=(--header="Authorization: Bearer ${CIVITAI_TOKEN}")
@@ -178,6 +179,11 @@ function provisioning_get_files() {
     for url in "$@"; do
         filename="${url##*/}"
         filename="${filename%%\?*}"
+        # Civitai API links end in a numeric version ID, not a filename.
+        # Use a .safetensors filename so ComfyUI can discover the model.
+        if [[ "$url" == https://civitai.com/api/download/models/* && "$filename" =~ ^[0-9]+$ ]]; then
+            filename="Civitai_v${filename}.safetensors"
+        fi
         if ! provisioning_download "$url" "$outdir" "$filename"; then
             FAILED_DOWNLOADS=$((FAILED_DOWNLOADS + 1))
         fi
@@ -194,21 +200,13 @@ function provisioning_start() {
     provisioning_get_files "${COMFYUI_DIR}/models/unet" "${UNET_MODELS[@]}"
     provisioning_get_files "${COMFYUI_DIR}/models/loras" "${LORA_MODELS[@]}"
 
-    # Civitai *original version 3422515*; NO ConvRot file from Hugging Face.
-    if ! provisioning_download \
-        "https://civitai.com/api/download/models/${KROMOSS_VERSION_ID}" \
-        "${COMFYUI_DIR}/models/diffusion_models" \
-        "$KROMOSS_FILENAME"; then
-        FAILED_DOWNLOADS=$((FAILED_DOWNLOADS + 1))
-    fi
-
     provisioning_get_files "${COMFYUI_DIR}/models/text_encoders" "${CLIP_MODELS[@]}"
     provisioning_get_files "${COMFYUI_DIR}/models/vae" "${VAE_MODELS[@]}"
     provisioning_get_files "${COMFYUI_DIR}/models/controlnet" "${CONTROLNET_MODELS[@]}"
     provisioning_get_files "${COMFYUI_DIR}/models/esrgan" "${ESRGAN_MODELS[@]}"
 
     if (( FAILED_DOWNLOADS > 0 )); then
-        printf '\nWARNING: %d file(s) failed to download. Check logs and CIVITAI_TOKEN.\n' "$FAILED_DOWNLOADS" >&2
+        printf '\nWARNING: %d file(s) failed to download. Check download logs, CIVITAI_TOKEN and HF_TOKEN if needed.\n' "$FAILED_DOWNLOADS" >&2
     else
         printf '\nProvisioning complete: all requested models are ready.\n'
     fi
